@@ -1,0 +1,15 @@
+.container__cards {
+    min-height: 60vh;
+    min-width: 90vw;
+    /* display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    
+    grid-template-rows: auto;
+    gap: 1em; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+}
+

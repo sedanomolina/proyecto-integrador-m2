@@ -1,0 +1,38 @@
+.container {
+    background-image: url("../../assets/images/espacio.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    min-width: 100%;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows:  20vh 60vh ; */
+    /* justify-content: center;
+    align-items: center; */
+    padding: 1em;
+    box-sizing: border-box;
+    overflow-x: hidden;
+
+}
+
+.container__inputs {
+    margin-top: 4em;
+    grid-column: 1/-1;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+    justify-self: center;
+
+}
+.container__cards{
+    grid-column:  1/-1;
+    min-width: 100vw;
+    min-height: 60vh;
+    align-self: center;
+    justify-self: center;
+
+}

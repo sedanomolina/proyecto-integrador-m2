@@ -1,0 +1,25 @@
+html {
+   box-sizing: border-box;
+   font-size: 16px;
+   /* display: flex;
+   justify-content: center;
+   align-items: center; */
+}
+
+*,
+*:before,
+*:after {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   /* display: flex; */
+   /* justify-content: center; */
+   /* align-items: center; */
+   /* margin: 0;
+   padding: 0; */
+   /* min-height: 100vh; */
+   font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+   
+}
