@@ -1,7 +1,7 @@
 import styles from './Cards.module.css'
-import Card from '../Card/Card';
+// import Card from '../Card/Card';
 import Card2 from '../Card/Card2';
-import SearchBar from '../SearchBar/SearchBar';
+// import SearchBar from '../SearchBar/SearchBar';
 
 export default function Cards({ characters, onClose }) {
 

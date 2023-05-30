@@ -1,5 +1,4 @@
 import styles from './Card.module.css'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { addFav, removeFav } from '../../redux/actions/actions'
 import { useState, useEffect } from 'react'
