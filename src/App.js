@@ -8,6 +8,7 @@ import Detail from './view/Details/Detail';
 import SearchCharacters from './view/SearchCharacters/SearchCharacters';
 import Home from './view/Home/Home'
 import LogOut from './view/LogOut/LogOut';
+import Favorites from './components/Favorites/Favorites';
 
 function App() {
 
@@ -24,6 +25,8 @@ function App() {
             <Route path='/Search' element={<SearchCharacters />} />
             <Route path='/detail/:id' element={<Detail />} />
             <Route path='/log-out' element={<LogOut />} />
+            <Route path='/favorites' element={<Favorites />} />
+         
          </Routes>
       </div>
    );

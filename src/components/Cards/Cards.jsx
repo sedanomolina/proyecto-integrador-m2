@@ -1,29 +1,28 @@
 import styles from './Cards.module.css'
-// import Card from '../Card/Card';
-import Card2 from '../Card/Card2';
-// import SearchBar from '../SearchBar/SearchBar';
+import Card from '../Card/Card';
 
 export default function Cards({ characters, onClose }) {
 
    const showCard = characters.map(character => (
-      <Card2
+      <Card
          key={character.id}
-         onClose={onClose}
+         onClose={character.onClose || onClose}
          id={character.id}
          name={character.name}
          status={character.status}
          species={character.species}
          gender={character.gender}
-         origin={character.origin}
+         origin={character.origin?.name}
          image={character.image}
       />
    ))
 
    return (
 
-      <section
-         className={styles.container__cards}>
+      <section className={styles.container__cards}>
+
          {showCard}
+
       </section>
 
    )

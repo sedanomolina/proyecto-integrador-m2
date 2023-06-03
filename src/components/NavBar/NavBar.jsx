@@ -29,6 +29,8 @@ export default function NavBar() {
 
                 <li><Link to={'/log-out'} >Log out</Link></li>
 
+                <li><Link to={'/favorites'} >Favorites</Link></li>
+
                 <div className={styles.dot} ></div>
             </nav>
 

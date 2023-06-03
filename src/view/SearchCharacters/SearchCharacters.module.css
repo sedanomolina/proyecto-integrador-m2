@@ -1,25 +1,30 @@
 .container {
     background-image: url("../../assets/images/espacio.jpg");
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     background-position: center;
     min-height: 100vh;
-    min-width: 100%;
+    min-width: fit-content;
     width: 100vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    display: flex;
+    flex-direction: column;
+
     /* grid-template-rows:  20vh 60vh ; */
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center; 
     padding: 1em;
     box-sizing: border-box;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 
 }
 
 .container__inputs {
     margin-top: 4em;
-    grid-column: 1/-1;
+    /* grid-column: 1/-1; */
     height: 15vh;
     display: flex;
     align-items: center;
@@ -29,7 +34,7 @@
 
 }
 .container__cards{
-    grid-column:  1/-1;
+    /* grid-column:  1/-1; */
     min-width: 100vw;
     min-height: 60vh;
     align-self: center;

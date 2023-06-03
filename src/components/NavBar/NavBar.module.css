@@ -77,6 +77,13 @@
         transition: all 0.2s ease-in-out;
         opacity: 1;
     }
+    .navMenu li:nth-child(5):hover ~ .dot {
+        -webkit-transform: translateX(450px);
+        transform: translateX(450px);
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        opacity: 1;
+    }
     .nav__scrolled {
         background-color: #181717a9;
         z-index: 101;

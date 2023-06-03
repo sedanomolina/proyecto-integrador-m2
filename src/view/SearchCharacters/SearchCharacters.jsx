@@ -1,72 +1,66 @@
-import { useState } from "react";
-import axios from "axios";
+
 import Cards from "../../components/Cards/Cards";
 import styles from './SearchCharacters.module.css'
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { getCharacters, removeCharacter } from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchCharacters() {
 
-    const [characters, setCharacters] = useState([]);
+    const dispatch = useDispatch();
+
+    const characters = useSelector(state => state.allCharacters)
+    // ------------------------LOCAL STORAE---------------
+    // useEffect(() => {
+    //     const storedCharacters = localStorage.getItem("characters");
+    //     if (storedCharacters) {
+    //         // setCharacters(JSON.parse(storedCharacters));
+    //         dispatch
+    //     }
+    // }, []);
+
+    // useEffect(() => {
+    //     localStorage.setItem("characters", JSON.stringify(characters));
+    // }, [characters]);
+
+    // ------------------------------------------------
 
     const onSearch = (id) => {
 
         if (characters.find(character => character.id === Number(id))) {
             return;
         };
-        axios(`https://rickandmortyapi.com/api/character/${id}`)
-            .then(({ data }) => setCharacters([...characters, data]))
-            .catch(() => window.alert('Error al buscar el personaje'));
+
+        dispatch(getCharacters(id))
     };
 
     const onClose = (id) => {
-        setCharacters([...characters.filter(character => character.id !== id)])
+        dispatch(removeCharacter(id))
     }
 
-    const onSearchEpisodes = (id) => {
-        if (Number(id) > 51) {
-            return;
-        }
-
-        axios(`https://rickandmortyapi.com/api/episode/${id}`)
-            .then(({ data }) => {
-                const characterURLs = data.characters;
-                const characterRequests = characterURLs.map(url => axios.get(url).then(({ data }) => data));
-
-                Promise.all(characterRequests)
-                    .then(charactersData => {
-                        const newCharacters = charactersData.map(character => (character));
-
-                        setCharacters([...newCharacters]);
-                    })
-                    .catch(() => window.alert('Error al buscar el personaje'));
-            })
-            .catch(() => window.alert('Error al buscar el episodio'));
-    };
-
-
-
-    const characterRandom = () => {
-
-        const min = 1;
-        const max = 826;
+    const onSearchCharacterRandom = () => {
+        const [min, max] = [1, 826]
         const idRandom = Math.floor(Math.random() * (max - min + 1)) + min;
-
-        axios(`https://rickandmortyapi.com/api/character/${idRandom}`)
-            .then(({ data }) => setCharacters([...characters, data]))
-            .catch(() => window.alert('Error al buscar el personaje'));
+        
+        // Evitamos un character repetido
+        if (characters.find(character => character.id === idRandom)) {
+            return;
+        };
+        dispatch(getCharacters(idRandom))
     }
+
+
 
     return (
         <section className={styles.container}>
 
             <fieldset className={styles.container__inputs}>
-                <SearchBar onSearch={onSearch} />
-                <SearchBar onSearch={onSearchEpisodes} />
-                <button onClick={characterRandom} >Random</button>
+                <SearchBar onSearch={onSearch} onSearchCharacterRandom={onSearchCharacterRandom} />
+
             </fieldset>
 
             <Cards
-                className={styles.container__cards}
+                // className={styles.container__cards}
                 onSearch={onSearch}
                 onClose={onClose}
                 characters={characters}
