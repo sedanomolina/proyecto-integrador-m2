@@ -5,19 +5,22 @@
     padding: 1em;
     gap: 1em;
 }
-.input__search{
+.input__search {
     border-radius: 55px;
     text-align: center;
-    padding: .3em;
+    padding: 0.3em;
 }
 .button__search {
     width: fit-content;
-padding: .5em;
-cursor: pointer;
-background-color: #5ddf4c;
-border: none;
-border-radius: .5em;
-color: #5e5316;
-margin: 5px;
+    padding: 0.5em;
+    cursor: pointer;
+    background-color: #5ddf4c;
+    border: none;
+    border-radius: 0.5em;
+    color: #5e5316;
+    margin: 5px;
+    width: 5em;
 }
-
+.button__search:hover {
+    box-shadow: 0 0 8px #5ddf4c;
+}

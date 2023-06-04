@@ -1,13 +1,22 @@
 import { useState } from "react";
 import styles from "./SearchBar.module.css";
 
-export default function SearchBar({ onSearch, onSearchCharacterRandom }) {
+export default function SearchBar({ onSearch, onSearchCharacterRandom, handleCleanCharacters }) {
 
    const [id, setId] = useState('')
 
+   const handleChange = (event) => {
+      const { value } = event.target;
+      setId(value);
+   };
 
-   const handleChange = event => setId(event.target.value);
-   const showCharacter = () => onSearch(id)
+   const handleKeyDown = (event) => {
+      const { key } = event
+      if (key === 'Enter') {
+         onSearch(id);
+         setId('')
+      }
+   }
 
    return (
       <div className={styles.container__search} >
@@ -17,18 +26,14 @@ export default function SearchBar({ onSearch, onSearchCharacterRandom }) {
             placeholder="Enter id"
             type='search'
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            value={id}
          />
+
          <div>
-            <button
-               className={styles.button__search}
-               onClick={showCharacter}>Search</button>
-            <button
-               className={styles.button__search}
-               onClick={onSearchCharacterRandom}
-            >Random</button>
-            <button
-               className={styles.button__search}
-            >Clear</button>
+            <button className={styles.button__search} onClick={onSearchCharacterRandom} >random</button>
+
+            <button className={styles.button__search} onClick={handleCleanCharacters} >clean</button>
          </div>
 
       </div>

@@ -85,7 +85,7 @@
         opacity: 1;
     }
     .nav__scrolled {
-        background-color: #181717a9;
+        background-color: #000000db;
         z-index: 101;
         padding: 1em;
         border-radius: 1em;

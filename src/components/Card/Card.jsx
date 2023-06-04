@@ -16,12 +16,10 @@ function Card(props) {
     const [isFav, setIsFav] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
 
-    const handleFavorite = () => {
-        return isFav
-            ? (setIsFav(false), removeFav(props.id))
-            : (setIsFav(true), addFav(props));
+    const handleFavorite = () => isFav
+        ? (setIsFav(false), removeFav(props.id))
+        : (setIsFav(true), addFav(props));
 
-    };
 
     useEffect(() => {
         myFavorites.forEach((favorite) => {

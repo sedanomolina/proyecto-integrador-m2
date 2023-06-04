@@ -21,13 +21,13 @@ export default function NavBar() {
             <span></span>
             <nav id="myNav" className={`${styles.navMenu} ${styles.menu}`}>
 
+                <li><Link to={'/log-out'} >Log out</Link></li>
+
                 <li> <Link className="a" to={'/home'} >Home</Link></li>
 
                 <li><Link to={'/search'} >Search</Link></li>
 
                 <li><Link to={'/about'} >About</Link></li>
-
-                <li><Link to={'/log-out'} >Log out</Link></li>
 
                 <li><Link to={'/favorites'} >Favorites</Link></li>
 

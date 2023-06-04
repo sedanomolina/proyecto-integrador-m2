@@ -1,4 +1,4 @@
-import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, ADD_CHARACTER, REMOVE_CHARACTER,CLEAR_CHARACTERS } from "../actions/types";
+import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, ADD_CHARACTER, REMOVE_CHARACTER,CLEAN_CHARACTERS,ADD_LOCAL_STORAGE_CHARACTERS } from "../actions/types";
 
 const initialState = {
     allCharacters: [],
@@ -10,7 +10,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
 
         case ADD_CHARACTER:
-            state.allCharacters.length > 7 && state.allCharacters.shift()
+            state.allCharacters.length > 5 && state.allCharacters.shift()
             return {
                 ...state
                 , allCharacters: [...state.allCharacters, payload]
@@ -20,13 +20,20 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case REMOVE_CHARACTER:
             return {
                 ...state
-                , allCharacters: []
+                , allCharacters: state.allCharacters.filter(character => character.id !== payload)
             };
 
-        case CLEAR_CHARACTERS:
+        case CLEAN_CHARACTERS:
             return {
                 ...state
-                , allCharacters: [...state.allCharacters.filter(character => character.id !== payload)]
+                , allCharacters: []
+                
+            };
+        case ADD_LOCAL_STORAGE_CHARACTERS:
+            return {
+                ...state
+                , allCharacters: payload
+                
             };
 
 
@@ -41,7 +48,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case REMOVE_FAV:
             return {
                 ...state
-                , myFavorites: [...state.allCharactersFav.filter(favorite => favorite.id !== payload)]
+                , myFavorites: [...state.myFavorites.filter(favorite => favorite.id !== payload)]
+                , allCharactersFav: [...state.allCharactersFav.filter(favorite => favorite.id !== payload)]
             };
 
         case FILTER:

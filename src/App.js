@@ -24,8 +24,8 @@ function App() {
             <Route path='/about' element={<About />} />
             <Route path='/Search' element={<SearchCharacters />} />
             <Route path='/detail/:id' element={<Detail />} />
-            <Route path='/log-out' element={<LogOut />} />
             <Route path='/favorites' element={<Favorites />} />
+            <Route path='/log-out' element={<LogOut />} />
          
          </Routes>
       </div>

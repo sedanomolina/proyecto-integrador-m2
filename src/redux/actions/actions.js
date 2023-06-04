@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, ADD_CHARACTER, REMOVE_CHARACTER, CLEAR_CHARACTERS } from "./types"
+import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, ADD_CHARACTER, REMOVE_CHARACTER, CLEAN_CHARACTERS, ADD_LOCAL_STORAGE_CHARACTERS } from "./types"
 
 
 export const addFav = (character) => ({
@@ -35,10 +35,14 @@ export const removeCharacter = (id) => ({
     payload: id
 });
 
-export const clearCharacters = () => ({
-    type: CLEAR_CHARACTERS
+export const cleanCharacters = () => ({
+    type: CLEAN_CHARACTERS
 })
 
+export const getLocalStorageCharacters = (characters) => ({
+    type: ADD_LOCAL_STORAGE_CHARACTERS,
+    payload: characters
+});
 
 
 
