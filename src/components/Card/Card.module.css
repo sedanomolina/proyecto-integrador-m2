@@ -162,7 +162,7 @@ p {
     width: 25px;
     height: 25px;
     border-radius: 50% 0;
-    z-index: 2000;
+    z-index: 200;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -183,3 +183,10 @@ p {
     align-items: center;
     cursor: pointer;
 }
+
+.enlace {
+    z-index: 300;
+    cursor: pointer;
+}
+/* .link_details > p {
+} */

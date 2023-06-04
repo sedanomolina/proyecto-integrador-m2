@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addFav, removeFav } from '../../redux/actions/actions'
 import styles from './Card.module.css'
 import portal from '../../assets/images/portal.gif'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Card(props) {
 
@@ -58,7 +58,9 @@ function Card(props) {
                                 {onClose && <button onClick={() => props.onClose(props.id)} className={styles.close}>X</button>}
                             </div>
 
-                            <h6 className={styles.para}>{props.name}</h6>
+                            <Link className={styles.enlace} to={`/detail/${props.id}`} >
+                                <h6 className={styles.para}>{props.name}</h6>
+                            </Link>
                             <div className={styles.line}>
                                 <h6 className={styles.para}>{props.gender}</h6> <i className={`${styles.fa} ${styles['fa-plane']}`} aria-hidden="true"></i>
                             </div>
