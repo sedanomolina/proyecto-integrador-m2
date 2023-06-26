@@ -1,3 +1,5 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -26,7 +28,7 @@ function App() {
             <Route path='/detail/:id' element={<Detail />} />
             <Route path='/favorites' element={<Favorites />} />
             <Route path='/log-out' element={<LogOut />} />
-         
+
          </Routes>
       </div>
    );

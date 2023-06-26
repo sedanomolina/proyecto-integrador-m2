@@ -10,7 +10,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
 
         case ADD_CHARACTER:
-            state.allCharacters.length > 5 && state.allCharacters.shift()
+            state.allCharacters.length > 11 && state.allCharacters.shift()
             return {
                 ...state
                 , allCharacters: [...state.allCharacters, payload]

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import Card from "../Card/Card";
 import styles from './Favorites.module.css'
 import { filterCards, orderCards } from '../../redux/actions/actions'
 import { useDispatch } from "react-redux";
+import Cards from "../Cards/Cards";
 
 const Favorites = () => {
 
@@ -24,8 +24,8 @@ const Favorites = () => {
     };
 
     return (
-        <section className={styles.container}>
-            <div className={styles.container__search}>
+        <section className={styles.container_fav}>
+            <fieldset className={styles.container_selects} >
 
                 <select onChange={handleOrder}>
                     <option value="A">Ascendente</option>
@@ -38,24 +38,12 @@ const Favorites = () => {
                     <option value="Genderless">Genderless</option>
                     <option value="unknown">Unknown</option>
                 </select>
-            </div>
-            <div className={styles.container_cards}>
+            </fieldset>
 
-                {myFavorites.map(character => (
-                    <Card
-                        key={character.id}
-                        onClose={() => character.onClose(character.id)}
-                        id={character.id}
-                        name={character.name}
-                        status={character.status}
-                        species={character.species}
-                        gender={character.gender}
-                        origin={character.origin?.name}
-                        image={character.image}
-                    />
-                ))}
-            </div>
-
+            <Cards
+                // onClose={onClose}
+                allCharacters={myFavorites}
+            />
         </section>
     )
 };

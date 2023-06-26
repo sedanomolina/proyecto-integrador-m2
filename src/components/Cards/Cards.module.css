@@ -1,25 +1,13 @@
 .container__cards {
-    min-height: 60vh;
-    min-width: 90vw;
+    position: absolute;
+    top: 24vh;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
+    justify-content: center;
+    /* align-content: flex-start; */
     flex-direction: row-reverse; /* Invertir el orden horizontal */}
 
-.container__cards > * {
-    flex-basis: 20%; /* Cada elemento ocupa un 20% del contenedor */
-    flex-grow: 0; /* Evita que los elementos crezcan para ocupar todo el espacio disponible */
-    max-width: 20%; /* Máximo de 5 elementos por fila */
-    min-width: 20%; /* Mínimo de 4 elementos por fila */
-}
+
 .container__cards > *:last-child {
     order: -1; /* Mover el último elemento al principio */
 }
-
-.portal{
-
-    width: 200px;
-    height: 200px;
-}
-

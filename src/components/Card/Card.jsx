@@ -7,19 +7,22 @@ import { Link } from 'react-router-dom'
 
 function Card(props) {
 
-    // const { id, name, status, species, gender, origin, image } = props
-    const { onClose } = props
-    const { image } = props
+    const { onClose, image, id, status } = props
     const { addFav, removeFav } = props;
     const { myFavorites } = props;
 
-    const [isFav, setIsFav] = useState(false)
+    const [isFav, setIsFav] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     const handleFavorite = () => isFav
-        ? (setIsFav(false), removeFav(props.id))
-        : (setIsFav(true), addFav(props));
-
+        ? (
+            setIsFav(false),
+            removeFav(props.id)
+        )
+        : (
+            setIsFav(true),
+            addFav(props)
+        );
 
     useEffect(() => {
         myFavorites.forEach((favorite) => {
@@ -30,24 +33,25 @@ function Card(props) {
     useEffect(() => {
         const img = new Image();
         img.src = image;
-        img.onload = () => {
-            setIsLoading(false);
-        };
+        img.onload = () => setIsLoading(false);
     }, [image]);
 
     return isLoading ? (
-        <div className={styles.portal} >
-            <img src={portal} alt="Loading" />
+        <div className={styles.container}>
+            <div className={styles.panel}>
+                <div className={styles.portal} >
+                    <img src={portal} alt="Loading" />
+                </div>
+            </div>
         </div>
     ) :
         <div className={styles.container}>
             <div className={styles.panel}>
-                <div className={styles.ring}>
+                <div className={styles[status.toLowerCase()]}>
                     <img className={styles.card} src={props.image} alt="" />
                     <div className={styles.border}>
                         <div className={styles.slide}>
                             <div className={styles.close_like} >
-
                                 {
                                     isFav ? (
                                         <button className={styles.like} onClick={handleFavorite}>❤️</button>
@@ -55,19 +59,15 @@ function Card(props) {
                                         <button className={styles.like} onClick={handleFavorite}>🤍</button>
                                     )
                                 }
-                                {onClose && <button onClick={() => props.onClose(props.id)} className={styles.close}>X</button>}
+                                {onClose && <button onClick={() => onClose(id)} className={styles.close}>X</button>}
                             </div>
-
-                            <Link className={styles.enlace} to={`/detail/${props.id}`} >
-                                <h6 className={styles.para}>{props.name}</h6>
-                            </Link>
+                            <h6 className={styles.para}>{props.name}</h6>
                             <div className={styles.line}>
-                                <h6 className={styles.para}>{props.gender}</h6> <i className={`${styles.fa} ${styles['fa-plane']}`} aria-hidden="true"></i>
+                                <Link to={`/detail/${props.id}`} >
+                                    <h6 className={styles.enlace} >Read more!</h6>
+                                </Link>
                             </div>
-                            <div className={styles.line}>
-                                <h6 className={styles.para}>{props.origin}</h6> <i className={`${styles.fa} ${styles['fa-plane']}`} aria-hidden="true"></i>
-                                <h6 className={styles.para}>{props.status}</h6>
-                            </div>
+                            <h6 className={styles.para}>{props.status}</h6>
                         </div>
                     </div>
                 </div>

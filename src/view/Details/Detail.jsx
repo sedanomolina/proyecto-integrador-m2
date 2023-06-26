@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import styles from './Detail.module.css'
 export default function Detail() {
 
     const { id } = useParams();
@@ -8,21 +9,26 @@ export default function Detail() {
     const [character, setCharacter] = useState({});
 
     useEffect(() => {
-        axios(`https://rickandmortyapi.com/api/character/${id}`)
-            .then((response) => setCharacter(response.data))
-            .catch(()=>window.alert('No llego nada'))
+        axios
+            .get(`https://rickandmortyapi.com/api/character/${id}`)
+            .then(response => setCharacter(response.data))
+            .catch(() => window.alert('No llego nada'))
 
         return setCharacter({});
     }, [id])
-
+    console.log(character);
     return (
-        <div>
-            <h1>{character.name}</h1>
-            <h3>{character.status}</h3>
-            <h3>{character.species}</h3>
-            <h3>{character.gender}</h3>
-            <h3>{character.origin?.name}</h3>
+        <main>
             <img src={character.image} alt={character.name} />
-        </div>
+            <h1>{character.name}</h1>
+            <h3>ID: {character.id}</h3>
+            <h3>Gender: {character.gender}</h3>
+            <h3>Status: {character.status}</h3>
+            <h3>Species: {character.species}</h3>
+            <h3>Subspecies: {character.species}</h3>
+            <h3>Origin: {character.origin?.name}</h3>
+            <h3>Location: {character.location?.name}</h3>
+
+        </main>
     )
 }
